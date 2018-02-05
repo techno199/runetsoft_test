@@ -1,0 +1,39 @@
+<div class="task">
+  <div class="task-header">
+    <p>{{task.title}}</p>
+    <div class="task-remove" (click)="remove()">
+      <span class="cross">&#x2A2F;</span> 
+    </div>
+  </div>
+  <div (click)="open(content)" class="task-body">
+    <div (click)="movePrev()" class="task-move prev">
+      <div class="arrow">
+          &laquo;
+      </div>
+    </div>
+    <div (click)="moveNext()" class="task-move next">
+      <div class="arrow">
+          &raquo;
+      </div>
+    </div>
+    <p class="body">{{task.body}}</p>
+  </div>
+</div>
+
+<!-- Template for modal window -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{task.title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{task.body}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+

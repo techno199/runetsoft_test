@@ -1,0 +1,19 @@
+.taskmanager_column {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    height: 100%;
+
+    .wrapper {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 5px 0 10px 10px;
+        border-bottom: 1px solid black;
+        background: transparent;
+        position: sticky;
+        top: 0;
+        color: white;
+    }
+}

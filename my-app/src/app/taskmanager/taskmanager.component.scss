@@ -1,0 +1,11 @@
+.taskmanager {
+    display: flex;
+    background: linear-gradient(90deg, #373277, #5a53c2);
+    justify-content: center;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    .column {
+        flex: 1;
+    }
+}

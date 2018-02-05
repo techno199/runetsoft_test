@@ -1,0 +1,37 @@
+<div [class.opened]="isSidebarOpened" class="sidebar">
+  <div [class.opened]="isSidebarOpened" class="sidebar-header">
+    <div (click)="toggleSidebar()" class="toggle_sidebar">
+      <span>
+        &#x2630;
+      </span>
+    </div>
+  </div>
+  <div class="sidebar-item" (click)="openAddTaskModal(addTaskModal)">
+    <span>Add Task</span>
+  </div>
+</div>
+
+<ng-template #addTaskModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Add Task</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input name="task-name" class="form-control" placeholder="Task name" [(ngModel)]="newTaskName"/>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="task-desc" class="form-control" placeholder="Task description" [(ngModel)]="newTaskDesc"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" (click)="addTask()">Done.</button>
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>

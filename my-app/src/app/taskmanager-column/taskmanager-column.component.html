@@ -1,0 +1,15 @@
+<div class="taskmanager_column">
+  <div class="header">
+    <span>{{type.name}}</span>
+  </div>
+  <div class="wrapper">
+    <div *ngFor="let task of tasks">
+      <app-task 
+        [task]="task" 
+        (onRemove)="onRemove($event)"
+        (onMoveNext)="onMoveNext($event)"
+        (onMovePrev)="onMovePrev($event)">
+      </app-task>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+$sidebar-hover-gradient: linear-gradient(to right, rgba($color: #fff, $alpha: 0), rgba($color: #fff, $alpha: .2), rgba($color: #fff, $alpha: 0));
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-left: -255px;
+    background: #2d156e;
+    color: white;
+    height: 100%;
+
+    .sidebar-header {
+        display: flex;
+        justify-content: flex-end;
+
+        .toggle_sidebar {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle_sidebar:hover {
+            background: rgba($color: #fff, $alpha: .2);
+        }
+    }
+
+    .sidebar-header.opened {
+        justify-content: flex-start;
+    }
+
+    .sidebar-item {
+        padding: 10px;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .sidebar-item:hover {
+        background: transparent;
+        cursor: unset;
+    }
+}
+.sidebar.opened {
+    margin-left: 0;
+
+    .sidebar-item:hover {
+        background: $sidebar-hover-gradient;
+        cursor: pointer;
+    }
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
