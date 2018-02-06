@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Task } from '../task';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task',
@@ -9,7 +10,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TaskComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(
+    private modalService: NgbModal,
+    private taskService: TaskService
+  ) { }
 
   @Input() task: Task;
   @Output() onRemove = new EventEmitter<Task>();
@@ -20,15 +24,18 @@ export class TaskComponent implements OnInit {
   }
 
   remove() {
-    this.onRemove.emit(this.task);
+    this.taskService.removeTask(this.task)
+      .subscribe();
   }
 
   movePrev() {
-    this.onMovePrev.emit(this.task);
+    this.taskService.moveTaskPrev(this.task)
+      .subscribe();
   }
 
   moveNext() {
-    this.onMoveNext.emit(this.task);
+    this.taskService.moveTaskNext(this.task)
+      .subscribe();
   }
 
   open(content) {

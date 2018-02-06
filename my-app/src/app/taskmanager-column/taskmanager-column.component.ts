@@ -19,23 +19,6 @@ export class TaskmanagerColumnComponent implements OnInit {
     this.getTasks();
   }
 
-  onRemove(task: Task) {
-    this.taskService.removeTask(task)
-      .subscribe((deletedId) => {
-        this.getTasks();
-      })
-  }
-
-  onMoveNext(task: Task) {
-    this.taskService.moveTaskNext(task)
-      .subscribe();
-  }
-
-  onMovePrev(task: Task) {
-    this.taskService.moveTaskPrev(task)
-      .subscribe();
-  }
-
   getTasks() {
     this.taskService.getTasks(this.type)
       .subscribe((tasks) => {

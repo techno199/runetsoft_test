@@ -5,10 +5,7 @@
   <div class="wrapper">
     <div *ngFor="let task of tasks">
       <app-task 
-        [task]="task" 
-        (onRemove)="onRemove($event)"
-        (onMoveNext)="onMoveNext($event)"
-        (onMovePrev)="onMovePrev($event)">
+        [task]="task">
       </app-task>
     </div>
   </div>
