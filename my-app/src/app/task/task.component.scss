@@ -14,6 +14,7 @@ $hover-color: rgba(0,0,0,.3);
     border-bottom: 1px solid #e9ecef;
     display: flex;
     justify-content: space-between;
+    word-break: break-all;
     .cross {
         opacity: 0.75;
     }
@@ -64,8 +65,12 @@ $hover-color: rgba(0,0,0,.3);
         align-items: center;
         flex-grow: 1;
         cursor: pointer;
+        word-break: break-all;
     }
     .body:hover {
         background: $hover-color;
     }
+}
+.modal-body {
+    word-wrap: break-word;
 }
