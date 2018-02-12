@@ -9,66 +9,68 @@ $hover-color: rgba(0,0,0,.3);
     width: 200px;
     margin-top: 10px;
     user-select: none;
-}
-.task-header {
-    border-bottom: 1px solid #e9ecef;
-    display: flex;
-    justify-content: space-between;
-    word-break: break-all;
-    .cross {
-        opacity: 0.75;
-    }
-    .task-remove {
+
+    .task-header {
+        border-bottom: 1px solid #e9ecef;
         display: flex;
-        align-items: center;
-        cursor: pointer;
-        padding: 5px;
-    }
-    .task-remove:hover {
-        background: $hover-color;
-    }
-    p {
-        padding: 5px;
-        margin: 0;
-    }
-}
-.task-move {
-    height: 100%;
-    width: 30px;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    .arrow {
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-    }
-}
-.task-move.prev {
-    order: 1;
-}
-.task-move.next {
-    order: 3;
-}
-.task-move:hover {
-    background: $hover-color;
-}
-.task-body {
-    display: flex;
-    justify-content: space-between;
-    .body {
-        padding: 0 5px;
-        order: 2;
-        margin: 0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-grow: 1;
-        cursor: pointer;
+        justify-content: space-between;
         word-break: break-all;
+        .cross {
+            opacity: 0.75;
+        }
+        .task-remove {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .task-remove:hover {
+            background: $hover-color;
+        }
+        p {
+            padding: 5px;
+            margin: 0;
+        }
     }
-    .body:hover {
+    .task-move {
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        .arrow {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .task-move.prev {
+        order: 1;
+    }
+    .task-move.next {
+        order: 3;
+    }
+    .task-move:hover {
         background: $hover-color;
+    }
+    .task-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        .body {
+            padding: 0 5px;
+            order: 2;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-grow: 1;
+            cursor: pointer;
+            word-break: break-all;
+        }
+        .body:hover {
+            background: $hover-color;
+        }
     }
 }
 .modal-body {
