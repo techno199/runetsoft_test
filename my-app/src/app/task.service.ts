@@ -75,7 +75,7 @@ export class TaskService {
 
   addTask(title, body): Observable<number> {
     let newTask = addTask(title, body);
-    let changedColumnType = getTypeById(newTask.id);
+    let changedColumnType = getTypeById(newTask.typeId);
     this.change.emit(changedColumnType);
     return of(newTask.id); 
   }
