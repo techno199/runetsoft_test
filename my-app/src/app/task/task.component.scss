@@ -68,7 +68,7 @@ $hover-color: rgba(0,0,0,.3);
             align-items: center;
             flex-grow: 1;
             cursor: pointer;
-            word-break: break-all;
+            word-break: break-word;
         }
         .body:hover {
             background: $hover-color;
