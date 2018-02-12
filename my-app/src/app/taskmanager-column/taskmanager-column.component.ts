@@ -17,6 +17,12 @@ export class TaskmanagerColumnComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
+    this.taskService.change
+      .subscribe((type: TaskType) => {
+        if (this.type.id === type.id) {
+          this.getTasks();
+        }
+      })
   }
 
   getTasks() {

@@ -16,10 +16,10 @@ export class TaskmanagerComponent implements OnInit {
 
   ngOnInit() {
     this.getTaskTypes();
-    this.taskService.change
-      .subscribe(() => {
-        this.getTaskTypes();
-      })
+    // this.taskService.change
+    //   .subscribe(() => {
+    //     this.getTaskTypes();
+    //   })
   }
 
   getTaskTypes() {

@@ -20,7 +20,7 @@ export class TaskService {
 
   constructor() { }
 
-  @Output() change = new EventEmitter<void>();
+  @Output() change = new EventEmitter<TaskType>();
 
   getTaskTypes(): Observable<TaskType[]> {
     return of(getTypes());
@@ -32,7 +32,7 @@ export class TaskService {
 
   removeTask(task: Task): Observable<number> {
     let removedId = removeTask(task);
-    this.change.emit();
+    this.change.emit(getTypeById(task.typeId));
     return of(removedId);
   }
 
@@ -46,11 +46,14 @@ export class TaskService {
     let currentTaskTypeIndex = sortedTaskTypes.findIndex((type) => type.id === currentTaskType.id);
     // Next task type will be the next item in priority-sorted list
     let nextTaskTypeIndex = currentTaskTypeIndex === sortedTaskTypes.length - 1 ? currentTaskTypeIndex : (currentTaskTypeIndex + 1);
+    let nextTaskType = sortedTaskTypes[nextTaskTypeIndex];
     // Set new task type id
-    task.typeId = sortedTaskTypes[nextTaskTypeIndex].id;
+    task.typeId = nextTaskType.id;
 
     updateTask(task);
-    this.change.emit();
+    // Emit changes indicating which task type it was
+    this.change.emit(currentTaskType);
+    this.change.emit(nextTaskType);
     return of(task.id);
   }
 
@@ -61,17 +64,19 @@ export class TaskService {
     let sortedTaskTypes = taskTypes.sort((a,b) => a.priority - b.priority);
     let currentTaskTypeIndex = sortedTaskTypes.findIndex((type) => type.id === currentTaskType.id);
     let prevTaskTypeIndex = currentTaskTypeIndex === 0 ? 0 : (currentTaskTypeIndex - 1);
-
-    task.typeId = sortedTaskTypes[prevTaskTypeIndex].id;
+    let prevTaskType = sortedTaskTypes[prevTaskTypeIndex];
+    task.typeId = prevTaskType.id;
 
     updateTask(task);
-    this.change.emit();
+    this.change.emit(currentTaskType);
+    this.change.emit(prevTaskType);
     return of(task.id);
   }
 
   addTask(title, body): Observable<number> {
     let newTask = addTask(title, body);
-    this.change.emit();
-    return of(newTask); 
+    let changedColumnType = getTypeById(newTask.id);
+    this.change.emit(changedColumnType);
+    return of(newTask.id); 
   }
 }

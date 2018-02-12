@@ -57,7 +57,7 @@ export function updateTask(task: Task) {
     tasks[taskIndex] = Object.assign(tasks[taskIndex], task);
 }
 
-export function addTask(title: string, body: string): number {
+export function addTask(title: string, body: string): Task {
     let newId = ++lastId;
     // TODO: check whether any type exists
     let typeId = getTypes().sort((a, b) => a.priority - b.priority)[0].id;
@@ -70,5 +70,5 @@ export function addTask(title: string, body: string): number {
     }
 
     tasks.push(newTask);
-    return newTask.id;
+    return newTask;
 }
