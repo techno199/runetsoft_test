@@ -6,6 +6,13 @@
 
     .wrapper {
         padding: 10px;
+
+        .app-task {
+            display: flex;
+        }
+        app-task {
+            flex: 1;
+        }
     }
 
     .header {

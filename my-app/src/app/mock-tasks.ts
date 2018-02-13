@@ -41,7 +41,9 @@ export let tasks: Task[] = [
         body: 'Testing body 1',
         title: 'Testing title 1'
     }
-];
+].map((item) => {
+    return Object.assign(item, { state: 'active'}) as Task;
+})
 
 export function removeTask(task: Task): number {
     tasks = tasks.filter((t) => t.id !== task.id);
@@ -62,12 +64,11 @@ export function addTask(title: string, body: string): Task {
     // TODO: check whether any type exists
     let typeId = getTypes().sort((a, b) => a.priority - b.priority)[0].id;
 
-    let newTask: Task = {
-        id: newId,
-        typeId,
-        body,
-        title
-    }
+    let newTask = new Task();
+    newTask.id = newId;
+    newTask.body = body;
+    newTask.title = title;
+    newTask.typeId = typeId;
 
     tasks.push(newTask);
     return newTask;

@@ -3,10 +3,13 @@
     <span>{{type.name}}</span>
   </div>
   <div class="wrapper">
-    <div *ngFor="let task of tasks">
-      <app-task 
-        [task]="task">
-      </app-task>
+    <div 
+      class="app-task"
+      *ngFor="let task of tasks"
+      [@taskState]="task.state">
+        <app-task 
+          [task]="task">
+        </app-task>
     </div>
   </div>
 </div>

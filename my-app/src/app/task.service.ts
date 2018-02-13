@@ -21,6 +21,8 @@ export class TaskService {
   constructor() { }
 
   @Output() change = new EventEmitter<TaskType>();
+  @Output() onRemove = new EventEmitter<Task>();
+  @Output() onAdd = new EventEmitter<Task>();
 
   getTaskTypes(): Observable<TaskType[]> {
     return of(getTypes());
@@ -32,7 +34,8 @@ export class TaskService {
 
   removeTask(task: Task): Observable<number> {
     let removedId = removeTask(task);
-    this.change.emit(getTypeById(task.typeId));
+    // this.change.emit(getTypeById(task.typeId));
+    this.onRemove.emit(task);
     return of(removedId);
   }
 
@@ -52,8 +55,8 @@ export class TaskService {
 
     updateTask(task);
     // Emit changes indicating which task type it was
-    this.change.emit(currentTaskType);
-    this.change.emit(nextTaskType);
+    this.onRemove.emit(task);
+    this.onAdd.emit(task);
     return of(task.id);
   }
 
@@ -68,15 +71,15 @@ export class TaskService {
     task.typeId = prevTaskType.id;
 
     updateTask(task);
-    this.change.emit(currentTaskType);
-    this.change.emit(prevTaskType);
+    this.onRemove.emit(task);
+    this.onAdd.emit(task);
     return of(task.id);
   }
 
   addTask(title, body): Observable<number> {
     let newTask = addTask(title, body);
     let changedColumnType = getTypeById(newTask.typeId);
-    this.change.emit(changedColumnType);
+    this.onAdd.emit(newTask);
     return of(newTask.id); 
   }
 }

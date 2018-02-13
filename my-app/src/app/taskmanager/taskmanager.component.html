@@ -1,8 +1,4 @@
 <div class="taskmanager">
-  <!-- <app-taskmanager-column [type]="taskType.Plan"></app-taskmanager-column>
-  <app-taskmanager-column [type]="taskType.Developing"></app-taskmanager-column>
-  <app-taskmanager-column [type]="taskType.Testing"></app-taskmanager-column>
-  <app-taskmanager-column [type]="taskType.Ready"></app-taskmanager-column> -->
   <div class="column" *ngFor="let type of taskTypes">
     <app-taskmanager-column [type]="type"></app-taskmanager-column>
   </div>

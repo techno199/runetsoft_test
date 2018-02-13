@@ -5,4 +5,5 @@ export class Task {
     typeId: number;
     title: string = "Task title";
     body: string = "Task body";
+    state: string = 'active';
 }

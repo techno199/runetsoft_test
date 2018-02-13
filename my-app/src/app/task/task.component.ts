@@ -16,16 +16,14 @@ export class TaskComponent implements OnInit {
   ) { }
 
   @Input() task: Task;
-  @Output() onRemove = new EventEmitter<Task>();
-  @Output() onMovePrev = new EventEmitter<Task>();
-  @Output() onMoveNext = new EventEmitter<Task>();
 
   ngOnInit() {
   }
 
   remove() {
-    this.taskService.removeTask(this.task)
-      .subscribe();
+    this.task.state = 'removing';
+    setTimeout(() => {this.taskService.removeTask(this.task)
+      .subscribe()}, 0);
   }
 
   movePrev() {
