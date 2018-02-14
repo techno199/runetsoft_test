@@ -22,6 +22,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       transition('removing => void', animate('0.2s 0.1s ease-out', style({
         transform: 'scale(0.6)',
         opacity: 0.2
+      }))),
+      transition('active => void', animate(100, style({
+        height: 0
       })))
     ])
   ]
