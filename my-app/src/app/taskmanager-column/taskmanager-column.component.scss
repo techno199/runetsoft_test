@@ -5,7 +5,8 @@
     height: 100%;
 
     .wrapper {
-        padding: 10px;
+        margin: 10px;
+        min-width: 200px;
 
         .app-task {
             display: flex;
