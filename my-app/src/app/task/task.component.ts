@@ -28,12 +28,16 @@ export class TaskComponent implements OnInit {
 
   movePrev() {
     this.taskService.moveTaskPrev(this.task)
-      .subscribe();
+      .subscribe(() => {
+      }, (err) => {
+      });
   }
 
   moveNext() {
     this.taskService.moveTaskNext(this.task)
-      .subscribe();
+      .subscribe(() => {
+      }, (err) => {
+      });
   }
 
   open(content) {

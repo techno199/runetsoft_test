@@ -5,7 +5,7 @@
       <span class="cross">&#x2A2F;</span> 
     </div>
   </div>
-  <div (click)="open(content)" class="task-body">
+  <div class="task-body">
     <div (click)="movePrev()" class="task-move prev">
       <div class="arrow">
           &laquo;
@@ -16,7 +16,7 @@
           &raquo;
       </div>
     </div>
-    <div class="body">{{task.body}}</div>
+    <div class="body" (click)="open(content)">{{task.body}}</div>
   </div>
 </div>
 

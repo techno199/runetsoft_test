@@ -11,8 +11,9 @@ import {
 } from './mock-types'
 import { TaskType } from './task-types';
 import { Task } from './task';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { Type } from '@angular/compiler/src/output/output_ast';
+import { } from 'rxjs/add/observable';
 
 
 @Injectable()
@@ -50,6 +51,11 @@ export class TaskService {
     // Next task type will be the next item in priority-sorted list
     let nextTaskTypeIndex = currentTaskTypeIndex === sortedTaskTypes.length - 1 ? currentTaskTypeIndex : (currentTaskTypeIndex + 1);
     let nextTaskType = sortedTaskTypes[nextTaskTypeIndex];
+
+    if (nextTaskType.id === currentTaskType.id) {
+      return Observable.throw(new Error());
+    }
+
     // Set new task type id
     task.typeId = nextTaskType.id;
 
@@ -68,6 +74,11 @@ export class TaskService {
     let currentTaskTypeIndex = sortedTaskTypes.findIndex((type) => type.id === currentTaskType.id);
     let prevTaskTypeIndex = currentTaskTypeIndex === 0 ? 0 : (currentTaskTypeIndex - 1);
     let prevTaskType = sortedTaskTypes[prevTaskTypeIndex];
+
+    if (prevTaskType.id === currentTaskType.id) {
+      return Observable.throw(new Error());
+    }
+
     task.typeId = prevTaskType.id;
 
     updateTask(task);
