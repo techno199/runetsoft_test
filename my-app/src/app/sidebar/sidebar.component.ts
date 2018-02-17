@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementRef } from '@angular/core/src/linker/element_ref';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sidebar',

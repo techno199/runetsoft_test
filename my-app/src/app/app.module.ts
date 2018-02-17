@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
@@ -11,6 +10,7 @@ import { TaskmanagerColumnComponent } from './taskmanager-column/taskmanager-col
 import { TaskComponent } from './task/task.component';
 import { TaskService } from './task.service';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
